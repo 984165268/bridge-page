@@ -1,67 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>HD Video Player - Safe & Fast</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 50px 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        .app-screenshot {
-            width: 300px;
-            max-width: 80%;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-        .download-btn {
-            display: inline-block;
-            background-color: #1e90ff;
-            color: #fff;
-            font-size: 18px;
-            padding: 15px 30px;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
-        }
-        .download-btn:hover {
-            background-color: #0b65c2;
-        }
-        p {
-            color: #555;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .footer {
-            font-size: 12px;
-            color: #999;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HD Video Player for Android</title>
+  <meta name="description" content="Download HD Video Player APK for Android. Lightweight, simple, and easy to install." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HD Video Player for Android" />
+  <meta property="og:description" content="Fast, lightweight, and easy to install Android video player." />
+  <meta property="og:type" content="website" />
+
+  <!-- 
+    Meta Pixel:
+    把 YOUR_PIXEL_ID 换成你的 Pixel ID。
+    没有 Pixel 的话，可以先整段保留，不影响页面。
+  -->
+  <script>
+    const ENABLE_PIXEL = false; 
+    const META_PIXEL_ID = "YOUR_PIXEL_ID";
+
+    if (ENABLE_PIXEL && META_PIXEL_ID && META_PIXEL_ID !== "YOUR_PIXEL_ID") {
+      !(function(f,b,e,v,n,t,s){
+        if(f.fbq)return;
+        n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;
+        n.push=n;
+        n.loaded=!0;
+        n.version='2.0';
+        n.queue=[];
+        t=b.createElement(e);
+        t.async=!0;
+        t.src=v;
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+      })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', META_PIXEL_ID);
+      fbq('track', 'PageView');
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #697386;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e5e7eb;
+      --soft: #eef4ff;
+      --success: #16a34a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .app-icon {
+      width: 84px;
+      height: 84px;
+      border-radius: 22px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
+    }
+
+    .play-symbol {
+      width: 0;
+      height: 0;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+      border-left: 28px solid #ffffff;
+      margin-left: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+    }
+
+    .subtitle {
+      margin: 12px auto 0;
+      max-width: 420px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 360px;
+      min-height: 56px;
+      margin-top: 24px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 16px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .small-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .card {
+      margin-top: 18px;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .info-label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .feature-list,
+    .steps-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li,
+    .steps-list li {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .feature-list li:last-child,
+    .steps-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .check {
+      flex: 0 0 auto;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(22, 163, 74, 0.12);
+      color: var(--success);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .step-number {
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .notice {
+      background: #fff7ed;
+      border-color: #fed7aa;
+      color: #7c2d12;
+    }
+
+    .notice p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .policy-section {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .policy-section h3 {
+      margin: 18px 0 8px;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .policy-section p {
+      margin: 0 0 10px;
+    }
+
+    .footer {
+      margin: 22px 0 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 420px) {
+      .page {
+        padding: 12px;
+      }
+
+      .hero {
+        padding: 24px 16px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .download-btn {
+        min-height: 54px;
+        font-size: 17px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <main class="page">
+    <div class="container">
 
-    <h1>HD Video Player - Safe & Fast</h1>
-    <img class="app-screenshot" src="https://984165268.github.io/bridge-page/fqry8nvah1rg80cy1fr8zfamv8-removed-bg.png" alt="App Screenshot">
+      <section class="hero">
+        <div class="app-icon" aria-hidden="true">
+          <div class="play-symbol"></div>
+        </div>
 
-    <br>
-    <a class="download-btn" href="https://www.ubertmagic.courses/click?offer_id=36013&pub_id=175801&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE&pub_sub_id=PASS_PLACEMENT_HERE" target="_blank">Download APK</a>
+        <h1>HD Video Player for Android</h1>
 
-    <p>Fast, safe, and easy to install!</p>
+        <p class="subtitle">
+          A lightweight video player designed for simple setup and smooth playback on Android devices.
+        </p>
 
-    <div class="footer">
-        This is a safe and official installation page for the HD Video Player app.
+        <a id="downloadButton" class="download-btn" href="#" rel="noopener noreferrer">
+          Download APK
+        </a>
+
+        <p class="small-note">
+          Installation information for Android APK users.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>App Information</h2>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Version</span>
+            <span class="info-value" id="versionText">1.0.0</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">File Size</span>
+            <span class="info-value" id="fileSizeText">XX MB</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Android Requirement</span>
+            <span class="info-value">Android 8.0+</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Last Updated</span>
+            <span class="info-value">May 2026</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Why Use This App?</h2>
+
+        <ul class="feature-list">
+          <li>
+            <span class="check">✓</span>
+            <span>Simple video playback experience for Android users.</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>Lightweight design with a clean and easy interface.</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>Quick APK setup with clear installation steps.</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>Designed for common video playback needs.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>How to Install</h2>
+
+        <ol class="steps-list">
+          <li>
+            <span class="step-number">1</span>
+            <span>Tap the Download APK button.</span>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <span>Open the downloaded APK file on your Android device.</span>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <span>Allow installation from your browser if your device asks for permission.</span>
+          </li>
+          <li>
+            <span class="step-number">4</span>
+            <span>Open the app and start using the video player.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="card notice">
+        <p>
+          Important: Only install APK files from sources you trust. You can remove the app anytime from your Android device settings.
+        </p>
+      </section>
+
+      <section id="privacy" class="card policy-section">
+        <h2>Privacy Policy</h2>
+
+        <p>
+          This page provides installation information for the HD Video Player Android APK. We do not ask users to enter sensitive personal information on this page.
+        </p>
+
+        <h3>Information We May Collect</h3>
+        <p>
+          Basic technical information may be collected for website analytics, such as page visits, button clicks, browser type, device type, and approximate region.
+        </p>
+
+        <h3>How Information Is Used</h3>
+        <p>
+          Information may be used to improve page performance, measure advertising results, and understand user interaction with the download button.
+        </p>
+
+        <h3>Contact</h3>
+        <p>
+          For privacy questions, contact us at:
+          <a id="privacyEmail" href="mailto:support@example.com">support@example.com</a>
+        </p>
+      </section>
+
+      <section id="terms" class="card policy-section">
+        <h2>Terms of Use</h2>
+
+        <p>
+          By using this page, you agree to use the information and download link for personal Android installation purposes only.
+        </p>
+
+        <h3>APK Installation</h3>
+        <p>
+          APK installation may require users to allow installation from their browser or file manager. Users are responsible for managing app permissions and device settings.
+        </p>
+
+        <h3>No Guarantee</h3>
+        <p>
+          The app is provided for general video playback use. Device compatibility may vary depending on Android version, storage, and system settings.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Use</a>
+          <a id="contactLink" href="mailto:support@example.com">Contact</a>
+        </div>
+
+        <div>
+          © 2026 HD Video Player. All rights reserved.
+        </div>
+      </footer>
+
     </div>
+  </main>
 
+  <script>
+    /*
+      这里改成你的真实下载地址。
+      现在先放你原来的按钮跳转域名。
+    */
+    const DOWNLOAD_URL = "https://www.ubertmagic.courses";
+
+    /*
+      这里改成真实文件大小。
+      例如：18.6 MB
+    */
+    const FILE_SIZE = "XX MB";
+
+    /*
+      这里改成你的客服邮箱。
+      建议使用和域名相关的邮箱。
+      例如：support@yourdomain.com
+    */
+    const SUPPORT_EMAIL = "support@example.com";
+
+    const downloadButton = document.getElementById("downloadButton");
+    const fileSizeText = document.getElementById("fileSizeText");
+    const privacyEmail = document.getElementById("privacyEmail");
+    const contactLink = document.getElementById("contactLink");
+
+    downloadButton.href = DOWNLOAD_URL;
+    fileSizeText.textContent = FILE_SIZE;
+
+    privacyEmail.textContent = SUPPORT_EMAIL;
+    privacyEmail.href = "mailto:" + SUPPORT_EMAIL;
+
+    contactLink.href = "mailto:" + SUPPORT_EMAIL;
+
+    downloadButton.addEventListener("click", function () {
+      if (window.fbq) {
+        fbq("trackCustom", "DownloadButtonClick");
+      }
+    });
+  </script>
 </body>
 </html>
