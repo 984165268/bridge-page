@@ -4,24 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>HD Video Player for Android</title>
-  <meta name="description" content="Download HD Video Player APK for Android. Lightweight, simple, and easy to install." />
+  <title>Recommended Android App</title>
+  <meta name="description" content="Continue to install a recommended Android mobile app. Simple, mobile-friendly, and easy to access." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="HD Video Player for Android" />
-  <meta property="og:description" content="Fast, lightweight, and easy to install Android video player." />
+  <meta property="og:title" content="Recommended Android App" />
+  <meta property="og:description" content="Continue to the app install page for Android users." />
   <meta property="og:type" content="website" />
 
-  <!-- 
-    Meta Pixel:
-    把 YOUR_PIXEL_ID 换成你的 Pixel ID。
-    没有 Pixel 的话，可以先整段保留，不影响页面。
-  -->
+  <!-- Meta Pixel: 有 Pixel 后再开启 -->
   <script>
-    const ENABLE_PIXEL = false; 
+    const ENABLE_PIXEL = false;
     const META_PIXEL_ID = "YOUR_PIXEL_ID";
 
-    if (ENABLE_PIXEL && META_PIXEL_ID && META_PIXEL_ID !== "YOUR_PIXEL_ID") {
+    if (ENABLE_PIXEL && META_PIXEL_ID !== "YOUR_PIXEL_ID") {
       !(function(f,b,e,v,n,t,s){
         if(f.fbq)return;
         n=f.fbq=function(){n.callMethod?
@@ -48,20 +43,16 @@
       --bg: #f5f7fb;
       --card: #ffffff;
       --text: #172033;
-      --muted: #697386;
+      --muted: #667085;
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
       --border: #e5e7eb;
       --soft: #eef4ff;
-      --success: #16a34a;
+      --green: #16a34a;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -73,9 +64,8 @@
     }
 
     .page {
-      width: 100%;
       min-height: 100vh;
-      padding: 18px;
+      padding: 16px;
     }
 
     .container {
@@ -96,22 +86,16 @@
     .app-icon {
       width: 84px;
       height: 84px;
-      border-radius: 22px;
       margin: 0 auto 16px;
+      border-radius: 24px;
       background: linear-gradient(135deg, #2563eb, #60a5fa);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
-    }
-
-    .play-symbol {
-      width: 0;
-      height: 0;
-      border-top: 18px solid transparent;
-      border-bottom: 18px solid transparent;
-      border-left: 28px solid #ffffff;
-      margin-left: 6px;
+      color: #ffffff;
+      font-size: 38px;
+      font-weight: 700;
     }
 
     h1 {
@@ -123,29 +107,26 @@
 
     .subtitle {
       margin: 12px auto 0;
-      max-width: 420px;
-      font-size: 16px;
+      max-width: 430px;
       color: var(--muted);
+      font-size: 16px;
     }
 
     .download-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       width: 100%;
       max-width: 360px;
       min-height: 56px;
       margin-top: 24px;
-      padding: 0 20px;
-      border: 0;
+      padding: 0 22px;
       border-radius: 16px;
       background: var(--primary);
       color: #ffffff;
+      text-decoration: none;
       font-size: 18px;
       font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
       box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
       transition: all 0.2s ease;
     }
@@ -157,8 +138,8 @@
 
     .small-note {
       margin-top: 12px;
-      color: var(--muted);
       font-size: 13px;
+      color: var(--muted);
     }
 
     .card {
@@ -203,24 +184,20 @@
       color: var(--text);
     }
 
-    .feature-list,
-    .steps-list {
+    .list {
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .feature-list li,
-    .steps-list li {
+    .list li {
       display: flex;
       gap: 10px;
       padding: 10px 0;
       border-bottom: 1px solid var(--border);
-      color: var(--text);
     }
 
-    .feature-list li:last-child,
-    .steps-list li:last-child {
+    .list li:last-child {
       border-bottom: 0;
     }
 
@@ -230,7 +207,7 @@
       height: 22px;
       border-radius: 50%;
       background: rgba(22, 163, 74, 0.12);
-      color: var(--success);
+      color: var(--green);
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -265,18 +242,18 @@
       font-size: 14px;
     }
 
-    .policy-section {
+    .policy {
       font-size: 14px;
       color: var(--muted);
     }
 
-    .policy-section h3 {
+    .policy h3 {
       margin: 18px 0 8px;
       color: var(--text);
       font-size: 16px;
     }
 
-    .policy-section p {
+    .policy p {
       margin: 0 0 10px;
     }
 
@@ -295,13 +272,15 @@
       margin-bottom: 10px;
     }
 
-    .footer a {
+    .footer a,
+    .policy a {
       color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
 
-    .footer a:hover {
+    .footer a:hover,
+    .policy a:hover {
       text-decoration: underline;
     }
 
@@ -312,7 +291,6 @@
 
       .hero {
         padding: 24px 16px;
-        border-radius: 22px;
       }
 
       h1 {
@@ -326,11 +304,6 @@
       .info-grid {
         grid-template-columns: 1fr;
       }
-
-      .download-btn {
-        min-height: 54px;
-        font-size: 17px;
-      }
     }
   </style>
 </head>
@@ -340,142 +313,140 @@
     <div class="container">
 
       <section class="hero">
-        <div class="app-icon" aria-hidden="true">
-          <div class="play-symbol"></div>
-        </div>
+        <div class="app-icon" aria-hidden="true">A</div>
 
-        <h1>HD Video Player for Android</h1>
+        <h1>Recommended Android App</h1>
 
         <p class="subtitle">
-          A lightweight video player designed for simple setup and smooth playback on Android devices.
+          Continue to the mobile app install page for Android users in the Philippines.
         </p>
 
         <a id="downloadButton" class="download-btn" href="#" rel="noopener noreferrer">
-          Download APK
+          Continue to Install
         </a>
 
         <p class="small-note">
-          Installation information for Android APK users.
+          You will be redirected to the app installation page.
         </p>
       </section>
 
       <section class="card">
-        <h2>App Information</h2>
+        <h2>Campaign Information</h2>
 
         <div class="info-grid">
           <div class="info-item">
-            <span class="info-label">Version</span>
-            <span class="info-value" id="versionText">1.0.0</span>
+            <span class="info-label">Offer Type</span>
+            <span class="info-value">App Install</span>
           </div>
 
           <div class="info-item">
-            <span class="info-label">File Size</span>
-            <span class="info-value" id="fileSizeText">XX MB</span>
+            <span class="info-label">Platform</span>
+            <span class="info-value">Mobile</span>
           </div>
 
           <div class="info-item">
-            <span class="info-label">Android Requirement</span>
-            <span class="info-value">Android 8.0+</span>
+            <span class="info-label">Device</span>
+            <span class="info-value">Android</span>
           </div>
 
           <div class="info-item">
-            <span class="info-label">Last Updated</span>
-            <span class="info-value">May 2026</span>
+            <span class="info-label">Region</span>
+            <span class="info-value">Philippines</span>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Why Use This App?</h2>
+        <h2>Before You Continue</h2>
 
-        <ul class="feature-list">
+        <ul class="list">
           <li>
             <span class="check">✓</span>
-            <span>Simple video playback experience for Android users.</span>
+            <span>This page is optimized for mobile Android users.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Lightweight design with a clean and easy interface.</span>
+            <span>You can review the app details after opening the install page.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Quick APK setup with clear installation steps.</span>
+            <span>Follow the instructions shown on the next page to complete installation.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Designed for common video playback needs.</span>
+            <span>You can leave the page anytime before installing.</span>
           </li>
         </ul>
       </section>
 
       <section class="card">
-        <h2>How to Install</h2>
+        <h2>How It Works</h2>
 
-        <ol class="steps-list">
+        <ol class="list">
           <li>
             <span class="step-number">1</span>
-            <span>Tap the Download APK button.</span>
+            <span>Tap the Continue to Install button.</span>
           </li>
           <li>
             <span class="step-number">2</span>
-            <span>Open the downloaded APK file on your Android device.</span>
+            <span>Review the app information on the next page.</span>
           </li>
           <li>
             <span class="step-number">3</span>
-            <span>Allow installation from your browser if your device asks for permission.</span>
+            <span>Follow the installation steps shown there.</span>
           </li>
           <li>
             <span class="step-number">4</span>
-            <span>Open the app and start using the video player.</span>
+            <span>Open the app after installation is complete.</span>
           </li>
         </ol>
       </section>
 
       <section class="card notice">
         <p>
-          Important: Only install APK files from sources you trust. You can remove the app anytime from your Android device settings.
+          Important: App availability and installation steps may vary by device, region, and the app page you are redirected to.
         </p>
       </section>
 
-      <section id="privacy" class="card policy-section">
+      <section id="privacy" class="card policy">
         <h2>Privacy Policy</h2>
 
         <p>
-          This page provides installation information for the HD Video Player Android APK. We do not ask users to enter sensitive personal information on this page.
+          This page provides access to a mobile app installation offer. We do not ask users to enter sensitive personal information on this page.
         </p>
 
-        <h3>Information We May Collect</h3>
+        <h3>Analytics</h3>
         <p>
-          Basic technical information may be collected for website analytics, such as page visits, button clicks, browser type, device type, and approximate region.
+          Basic technical information may be used to measure page visits, button clicks, device type, browser type, and campaign performance.
         </p>
 
-        <h3>How Information Is Used</h3>
+        <h3>Third-Party Page</h3>
         <p>
-          Information may be used to improve page performance, measure advertising results, and understand user interaction with the download button.
+          After clicking the continue button, you may be redirected to a third-party app or offer page. That page may have its own privacy policy and terms.
         </p>
 
         <h3>Contact</h3>
         <p>
-          For privacy questions, contact us at:
+          For questions, contact:
           <a id="privacyEmail" href="mailto:support@example.com">support@example.com</a>
         </p>
       </section>
 
-      <section id="terms" class="card policy-section">
+      <section id="terms" class="card policy">
         <h2>Terms of Use</h2>
 
         <p>
-          By using this page, you agree to use the information and download link for personal Android installation purposes only.
-        </p>
-
-        <h3>APK Installation</h3>
-        <p>
-          APK installation may require users to allow installation from their browser or file manager. Users are responsible for managing app permissions and device settings.
+          By using this page, you agree that the page is used to access a mobile app installation offer.
         </p>
 
         <h3>No Guarantee</h3>
         <p>
-          The app is provided for general video playback use. Device compatibility may vary depending on Android version, storage, and system settings.
+          App availability, compatibility, and installation results may vary depending on your device, operating system, region, and the third-party app page.
+        </p>
+
+        <h3>User Choice</h3>
+        <p>
+          You are responsible for reviewing the app details and choosing whether to install the app.
         </p>
       </section>
 
@@ -487,7 +458,7 @@
         </div>
 
         <div>
-          © 2026 HD Video Player. All rights reserved.
+          © 2026 Recommended Android App. All rights reserved.
         </div>
       </footer>
 
@@ -496,31 +467,21 @@
 
   <script>
     /*
-      这里改成你的真实下载地址。
-      现在先放你原来的按钮跳转域名。
+      这是根据 32308 offer 写的按钮链接。
+      后台 Tracking Link 不一样的话，把下面这一行换成后台给你的完整 Tracking Link。
     */
-    const DOWNLOAD_URL = "https://www.ubertmagic.courses";
+    const DOWNLOAD_URL = "https://www.ubertmagic.work/click?offer_id=32308&pub_id=175801&pub_click_id=fb_ph_android&site=facebook&pub_sub_id=ph_android_cpi";
 
     /*
-      这里改成真实文件大小。
-      例如：18.6 MB
-    */
-    const FILE_SIZE = "XX MB";
-
-    /*
-      这里改成你的客服邮箱。
-      建议使用和域名相关的邮箱。
-      例如：support@yourdomain.com
+      改成你的真实联系邮箱。
     */
     const SUPPORT_EMAIL = "support@example.com";
 
     const downloadButton = document.getElementById("downloadButton");
-    const fileSizeText = document.getElementById("fileSizeText");
     const privacyEmail = document.getElementById("privacyEmail");
     const contactLink = document.getElementById("contactLink");
 
     downloadButton.href = DOWNLOAD_URL;
-    fileSizeText.textContent = FILE_SIZE;
 
     privacyEmail.textContent = SUPPORT_EMAIL;
     privacyEmail.href = "mailto:" + SUPPORT_EMAIL;
@@ -529,7 +490,7 @@
 
     downloadButton.addEventListener("click", function () {
       if (window.fbq) {
-        fbq("trackCustom", "DownloadButtonClick");
+        fbq("trackCustom", "InstallButtonClick");
       }
     });
   </script>
